@@ -72,23 +72,33 @@ VALUES
 'Moto g85 5G - Urban Grey',
 'Motorola',
 'Moto g85 5G',
-'Stunning endless edge design, Cinematic 6.7 display + Dolby Atmos sound,
-    Moto Secure and fingerprint on display',
+'Stunning endless edge design, Cinematic 6.7 display + Dolby Atmos sound, Moto Secure and fingerprint on display',
 'https://www.amazon.com.au/gp/product/B0DB1HFNZ4/ref=sw_img_1?smid=ANEGB3WVEVKZB&psc=1',
 './public/Moto g85 5G.jpg'
 );
 
 CREATE TABLE IF NOT EXISTS Product_Inventory(
 id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-Quantity INT(),
- Price INT, 
- Customer_Reviews VARCHAR (5000)
-)
+product_Id INTEGER NOT NULL,
+Quantity INT NOT NULL,
+ Price DECIMAL(10,2) NOT NULL, 
+ Customer_Reviews VARCHAR (5000),
+ FOREIGN KEY (product_Id) REFERENCES Product_Information(id) ON DELETE CASCADE
+);
 
-INSERT INTO Product_Inventory(Quantity,Price,Customer_Reviews)
+INSERT INTO Product_Inventory(Product_Id, Quantity,Price,Customer_Reviews)
 VALUES
-('10','$35','Saddy: The package was delivered in record time. It was a present for my son who likes to have a watch "just for checking the time". I'm not aware of the other functions of this watch, but it serves the purpose well.')
-`;
+(1,44,119.00,'Craig: Excellent watch... perfect choice for me... love it'),
+(2,150,99.95,'BG: I purchased this watch to replace a W800H that I stupidly broke trying to force the strap pins out. I worn the first one for over 10 years as my surf watch. I smashed it into reefs in Indonesia, I had it in frigid icy cold oceans at the southern tip of New Zealand and extreme heat in the south pacific surfing heaving slabs.. it never, ever missed a beat. I am astounded at the beating this watch took over that decade. Its still sitting next to my computer, strapless, faithfully telling the time while the new one is on my wrist. Thanks Casio!'
+),
+(3,20,189.00,'I have had a couple of smart watches that really do not like the tradie work I do, being knocked around. Went for the Casio because they are always reliable, simple, easy. This one no different to the others I have had. Great service and price, delivered in record time.'
+),
+(4,8,1599.00,' One of the best phones'
+),
+(5,15,1849.00,'I love photography, and so when I upgrade my phone, the most important thing for me is the camera. Love the options in the default camera app, and really enjoy the AI features that are presented in this phone. To take full advantage of the AI capabilities, you do need to use Samsungs keyboard, phone app, SMS, etc, however Googles Gemini fits right in there if you prefer their apps. Great phone, solid battery life. No complaints from me.'
+),
+(6,50,399.00,'Honest much better than I expected, for a temporary phone, I am in love, might keep it for a while until I save up!'
+);`;
 
 async function main() {
   console.log("Seeding data to database.....");
