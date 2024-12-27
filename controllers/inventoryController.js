@@ -7,7 +7,11 @@ async function getAllInventoryItems(req, res) {
 }
 
 async function adminDashboard(req, res) {
-  res.render("storeAdminDashboard");
+  const getProductById=await db.getProductById(1);
+
+  console.log(getProductById)
+
+  res.render("storeAdminDashboard",{getProductById:getProductById});
 }
 
 module.exports = {

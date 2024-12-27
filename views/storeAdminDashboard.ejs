@@ -12,11 +12,15 @@
         <button type="submit">Home</button>
       </form>
       <h1>Administration Dashboard (Add, update or delete products !)</h1>
-
+      <p><%=locals.getProductById[0].id%></p>
       <div>
         <form method="GET" action="/admin">
           <label for="id">ID</label><br />
-          <input type="number" name="id" id="id" /><br>
+          <input type="number" 
+          name="id" 
+          id="id"
+          value=<%=locals.getProductById[0].id%>
+           /><br>
 
           <label for="category">Category</label><br />
           <input type="text" name="category" id="category" /><br />
