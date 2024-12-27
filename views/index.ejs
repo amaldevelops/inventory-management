@@ -4,10 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Inventory Application</title>
+    <link rel="stylesheet" href="../styles/styles.css">
   </head>
   <body>
     <div>
+        <form action="/admin">
+            <button type="submit">Admin Dashboard (Edit, Add, Delete Products)</button>
+          </form>
+        
       <h1>Welcome To Store Inventory Application !</h1>
+
       <% if (allProducts.length>0){%> <%allProducts.forEach(result=>{%>
       <div>
         <h2><%=result.item_name%></h2>
@@ -18,10 +24,6 @@
         <p><strong>Description:</strong> <%=result.product_description %></p>
         <p><a href=<%=result.external_product_url %> target="_blank">Amazon Product Info</a></p>
         
-        
-       
-        
-     
       </div>
       <%})%> <%}%>
     </div>
