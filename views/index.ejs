@@ -11,8 +11,17 @@
       <% if (allProducts.length>0){%> <%allProducts.forEach(result=>{%>
       <div>
         <h2><%=result.item_name%></h2>
-        <p>Category: </p>
-   
+        <img src=<%=result.image_url %> alt="Product Image" height="250px" width="250px">
+        <p><strong>Category: </strong><%=result.category%> </p>
+        <p><strong>Manufacturer:</strong> <%=result.manufacturer %></p>
+        <p><strong>Model No: </strong><%=result.model_no %></p>
+        <p><strong>Description:</strong> <%=result.product_description %></p>
+        <p><a href=<%=result.external_product_url %> target="_blank">Amazon Product Info</a></p>
+        
+        
+       
+        
+     
       </div>
       <%})%> <%}%>
     </div>
