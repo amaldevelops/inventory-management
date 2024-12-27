@@ -77,6 +77,17 @@ VALUES
 'https://www.amazon.com.au/gp/product/B0DB1HFNZ4/ref=sw_img_1?smid=ANEGB3WVEVKZB&psc=1',
 './public/Moto g85 5G.jpg'
 );
+
+CREATE TABLE IF NOT EXISTS Product_Inventory(
+id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+Quantity INT(),
+ Price INT, 
+ Customer_Reviews VARCHAR (5000)
+)
+
+INSERT INTO Product_Inventory(Quantity,Price,Customer_Reviews)
+VALUES
+('10','$35','Saddy: The package was delivered in record time. It was a present for my son who likes to have a watch "just for checking the time". I'm not aware of the other functions of this watch, but it serves the purpose well.')
 `;
 
 async function main() {
