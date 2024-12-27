@@ -4,15 +4,51 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Administration Console</title>
-    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/styles.css" />
   </head>
   <body>
     <div>
-      <form action="/">
+      <form method="GET" action="/">
         <button type="submit">Home</button>
       </form>
-      <h1>Administration Dashboard</h1>
-      <p>Add, update or delete products !</p>
+      <h1>Administration Dashboard (Add, update or delete products !)</h1>
+
+      <div>
+        <form method="GET" action="/admin">
+          <label for="id">ID</label><br />
+          <input type="number" name="id" id="id" /><br>
+
+          <label for="category">Category</label><br />
+          <input type="text" name="category" id="category" /><br />
+
+          <label for="item_name">Item Name</label><br />
+          <input type="text" name="item_name" id="item_name" /><br />
+
+          <label for="manufacturer">Manufacturer</label><br />
+          <input type="text" name="manufacturer" id="manufacturer" /><br />
+
+          <label for="model_no">Model No</label> <br />
+          <input type="text" name="model_no" id="model_no" /><br />
+
+          <label for="product_description">Product Description</label> <br>
+          <input
+            type="text"
+            name="product_description"
+            id="product_description"
+          /><br>
+
+          <label for="external_product_url">Amazon Product URL</label><br />
+          <input
+            type="text"
+            name="external_product_url"
+            id="external_product_url"
+          /><br>
+
+          <label for="image_url">Image URL</label><br>
+          <input type="text" name="image_url" id="image_url" /><br>
+          <button type="submit">Create,Update, Delete</button>
+        </form>
+      </div>
     </div>
   </body>
 </html>
