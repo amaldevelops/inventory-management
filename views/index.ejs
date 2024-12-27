@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Inventory Application</title>
-</head>
-<body>
+  </head>
+  <body>
     <div>
-        <h1>
-            Welcome To Store Inventory Application !
-        </h1>
+      <h1>Welcome To Store Inventory Application !</h1>
+      <% if (allProducts.length>0){%> <%allProducts.forEach(result=>{%>
+      <div>
+        <h2><%=result.item_name%></h2>
+        <p>Category: </p>
+   
+      </div>
+      <%})%> <%}%>
     </div>
-</body>
+  </body>
 </html>
