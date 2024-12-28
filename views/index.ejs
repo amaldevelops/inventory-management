@@ -28,7 +28,10 @@
       <% if (mainPageRenderView.length>0){%> <%mainPageRenderView.forEach(result=>{%>
       <div>
         <h2><%=result.item_name%></h2>
-        <a href=<%=result.id%>>View Item</a>
+     
+        <a href="<%= `viewitem/${result.id}` %>">View Item</a>
+
+
         <img src=<%=result.image_url %> alt="Product Image" height="250px" width="250px">
         <p><strong>Product ID: </strong><%=result.id%> </p>
         <p><strong>Category: </strong><%=result.category%> </p>

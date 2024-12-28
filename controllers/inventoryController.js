@@ -3,7 +3,7 @@ const db = require("../db/queries");
 async function getAllInventoryItems(req, res) {
   let mainPageRenderView;
   const { select_view } = req.query;
-  console.log(select_view);
+  // console.log(select_view);
 
   if (select_view === "allItems" || select_view === undefined) {
     mainPageRenderView = await db.SQLgetPopulateAllProducts();
@@ -35,6 +35,8 @@ async function adminDashboard(req, res) {
   // res.render("storeAdminDashboard", { getProductById: getProductById });
 
   const mainPageRenderView = await db.SQLgetPopulateAllProducts();
+
+  console.log(mainPageRenderView);
   res.render("storeAdminDashboard", { mainPageRenderView: mainPageRenderView });
 }
 
