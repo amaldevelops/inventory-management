@@ -1,11 +1,18 @@
 const pool = require("./pool");
 
-async function getPopulateAllProducts() {
+async function SQLgetPopulateAllProducts() {
   const { rows } = await pool.query("SELECT * FROM Product_Information");
   return rows;
 }
 
-async function getProductById(id)
+async function SQLGetProductByCategory(select_view)
+{
+const {rows} = await pool.query("SELECT * FROM Product_Information WHERE category=($1)",[select_view]);
+// console.log(rows);
+return rows;
+}
+
+async function SQLgetProductById(id)
 {
   const {rows} = await pool.query("SELECT * FROM Product_Information WHERE id=$1",[id]);
   return rows;
@@ -13,7 +20,7 @@ async function getProductById(id)
 
 
 module.exports = {
-  getPopulateAllProducts,
-  getProductById
+  SQLgetPopulateAllProducts,
+  SQLgetProductById,SQLGetProductByCategory
 };
 

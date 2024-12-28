@@ -8,13 +8,24 @@
   </head>
   <body>
     <div>
-        <form action="/admin">
+        <form action="/admin" method="GET">
             <button type="submit">Admin Dashboard (Edit, Add, Delete Products)</button>
           </form>
         
       <h1>Welcome To Store Inventory Application !</h1>
-
-      <% if (allProducts.length>0){%> <%allProducts.forEach(result=>{%>
+          <div>
+            <form action="/" method="GET">
+              <label for="select_view">Select View</label>
+              <select id="select_view" name="select_view">
+              <option value="allItems" selected>All Items</option>
+              <option value="watch"> Watch Category</option>
+              <option value="phone">Phone Category</option>
+              
+            </select>
+            <button type="submit">Update View</button>
+            </form>
+          </div>
+      <% if (mainPageRenderView.length>0){%> <%mainPageRenderView.forEach(result=>{%>
       <div>
         <h2><%=result.item_name%></h2>
         <img src=<%=result.image_url %> alt="Product Image" height="250px" width="250px">

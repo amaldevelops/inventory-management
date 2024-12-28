@@ -1,20 +1,38 @@
 const db = require("../db/queries");
 
 async function getAllInventoryItems(req, res) {
-  const allProducts = await db.getPopulateAllProducts();
-  console.log(allProducts);
-  res.render("index", { allProducts: allProducts });
+  let mainPageRenderView;
+  const { select_view } = req.query;
+  console.log(select_view);
+
+  if (select_view === "allItems" || select_view === undefined) {
+    mainPageRenderView = await db.SQLgetPopulateAllProducts();
+    res.render("index", { mainPageRenderView: mainPageRenderView });
+  } else if (select_view === "watch") {
+    mainPageRenderView = await db.SQLGetProductByCategory("Watch");
+    res.render("index", { mainPageRenderView: mainPageRenderView });
+  } else if (select_view === "phone") {
+    mainPageRenderView = await db.SQLGetProductByCategory("Phone");
+    res.render("index", { mainPageRenderView: mainPageRenderView });
+  } else {
+    mainPageRenderView = await db.SQLgetPopulateAllProducts();
+    res.render("index", { mainPageRenderView: mainPageRenderView });
+  }
+}
+
+async function getItemsByCategory(category, res) {
+  console.log(category);
+  const itemByCategory = await db.SQLGetProductByCategory(category);
+  return itemByCategory;
 }
 
 async function adminDashboard(req, res) {
-  const getProductById=await db.getProductById(1);
-
-  console.log(getProductById)
-
-  res.render("storeAdminDashboard",{getProductById:getProductById});
+  const getProductById = await db.SQLgetProductById(1);
+  res.render("storeAdminDashboard", { getProductById: getProductById });
 }
 
 module.exports = {
   getAllInventoryItems,
   adminDashboard,
+  getItemsByCategory,
 };
