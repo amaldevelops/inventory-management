@@ -40,8 +40,22 @@ async function adminDashboard(req, res) {
   res.render("storeAdminDashboard", { mainPageRenderView: mainPageRenderView });
 }
 
+async function addProduct(req, res) {
+  res.render("editProduct");
+}
+
+async function editProduct(req, res) {
+  res.render("editProduct");
+}
+async function deleteProduct(req, res) {
+  res.render("addProduct");
+}
+
 module.exports = {
   getAllInventoryItems,
   adminDashboard,
   getItemById,
+  addProduct,
+  editProduct,
+  deleteProduct,
 };
