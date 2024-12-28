@@ -20,31 +20,22 @@ async function getAllInventoryItems(req, res) {
   }
 }
 
-// async function getItemsByCategory(category, res) {
-//   console.log(category);
-//   const itemByCategory = await db.SQLGetProductByCategory(category);
-//   return itemByCategory;
-// }
+async function getItemById(req, res) {
+  const viewItem = req.params;
 
-async function getItemById(req,res)
-{
-  const select_view = req.params;
-  console.log(select_view);
+  const getProductById = await db.SQLgetProductById(viewItem.viewItem);
 
-  const getProductById = await db.SQLgetProductById(5);
+  console.log(getProductById);
 
   res.render("viewItem", { getProductById: getProductById });
 }
 
 async function adminDashboard(req, res) {
-  const getProductById = await db.SQLgetProductById(1);
-  res.render("storeAdminDashboard", { getProductById: getProductById });
+  // const getProductById = await db.SQLgetProductById(1);
+  // res.render("storeAdminDashboard", { getProductById: getProductById });
 
-
- const mainPageRenderView = await db.SQLgetPopulateAllProducts();
-    res.render("storeAdminDashboard", { mainPageRenderView: mainPageRenderView });
-
-
+  const mainPageRenderView = await db.SQLgetPopulateAllProducts();
+  res.render("storeAdminDashboard", { mainPageRenderView: mainPageRenderView });
 }
 
 module.exports = {
