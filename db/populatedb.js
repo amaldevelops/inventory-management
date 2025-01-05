@@ -102,8 +102,10 @@ VALUES
 
 async function main() {
   console.log("Seeding data to database.....");
+  console.log(process.env.URI_PRODUCTION);
 
   const client = new Client({
+    // console.log()
     connectionString: `${process.env.URI_PRODUCTION}`,
   });
   await client.connect();
