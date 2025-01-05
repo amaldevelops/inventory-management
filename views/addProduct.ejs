@@ -1,11 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Product</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <div>
+        <a href="/">Home</a>
+      <form method="GET" action="/admin">
+        <label for="id">ID</label><br />
+        <input type="number" name="id" id="id" /><br />
+
+        <label for="category">Category</label><br />
+        <input type="text" name="category" id="category" />
+        <br />
+
+        <label for="item_name">Item Name</label><br />
+        <input type="text" name="item_name" id="item_name" /><br />
+
+        <label for="manufacturer">Manufacturer</label><br />
+        <input type="text" name="manufacturer" id="manufacturer" /><br />
+
+        <label for="model_no">Model No</label> <br />
+        <input type="text" name="model_no" id="model_no" /><br />
+
+        <label for="product_description">Product Description</label> <br />
+        <input
+          type="text"
+          name="product_description"
+          id="product_description"
+        /><br />
+
+        <label for="external_product_url">Amazon Product URL</label><br />
+        <input
+          type="text"
+          name="external_product_url"
+          id="external_product_url"
+        /><br />
+
+        <label for="image_url">Image URL</label><br />
+        <input type="text" name="image_url" id="image_url" /><br />
+        <button type="submit">Create</button>
+      </form>
+    </div>
+  </body>
 </html>

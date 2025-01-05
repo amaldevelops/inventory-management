@@ -11,6 +11,10 @@
       <form method="GET" action="/">
         <button type="submit">Home</button>
       </form>
+
+      <form method="GET" action="/addproduct">
+        <button type="submit">Add New Product</button>
+      </form>
       <h1>Administration Dashboard (Add, update or delete products !)</h1>
     
       <% if (mainPageRenderView.length>0){%> <%mainPageRenderView.forEach(result=>{%>
@@ -24,11 +28,11 @@
           <p><strong>Description:</strong> <%=result.product_description %></p>
           <p><a href=<%=result.external_product_url %> target="_blank">Amazon Product Info</a></p>
 
-          <form action="/editProduct" method="PUT">
+          <form action="<%= `editProduct/${result.id}` %>" method="GET">
             <button type="submit">Edit</button>
           </form>
 
-          <form action="/admin" method="PUT">
+          <form action="<%= `deleteProduct/${result.id}` %>"  method="PUT">
             <button type="submit">Delete</button>
           </form>
           

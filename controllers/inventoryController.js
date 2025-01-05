@@ -25,7 +25,7 @@ async function getItemById(req, res) {
 
   const getProductById = await db.SQLgetProductById(viewItem.viewItem);
 
-  console.log(getProductById);
+  // console.log(getProductById);
 
   res.render("viewItem", { getProductById: getProductById });
 }
@@ -36,17 +36,22 @@ async function adminDashboard(req, res) {
 
   const mainPageRenderView = await db.SQLgetPopulateAllProducts();
 
-  console.log(mainPageRenderView);
+  // console.log(mainPageRenderView);
   res.render("storeAdminDashboard", { mainPageRenderView: mainPageRenderView });
 }
 
 async function addProduct(req, res) {
-  res.render("editProduct");
+  console.log("Render Add product route")
+  res.render("addProduct");
 }
 
 async function editProduct(req, res) {
-  res.render("editProduct");
+  // console.log("Render Edit product route")
+  const getProductById=await db.SQLgetProductById(1);
+
+  res.render("editProduct",{getProductById:getProductById});
 }
+
 async function deleteProduct(req, res) {
   res.render("addProduct");
 }
