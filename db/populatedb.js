@@ -104,7 +104,7 @@ async function main() {
   console.log("Seeding data to database.....");
 
   const client = new Client({
-    connectionString: `${process.env.URI_LOCAL_TESTING}`,
+    connectionString: `${process.env.URI_PRODUCTION}`,
   });
   await client.connect();
   await client.query(SQL);
