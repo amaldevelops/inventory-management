@@ -25,7 +25,11 @@
           <p><a href=<%=result.external_product_url %> target="_blank">Amazon Product Info</a></p>
 
           <form action="/editProduct" method="PUT">
-            <button type="submit">Edit/Delete</button>
+            <button type="submit">Edit</button>
+          </form>
+
+          <form action="/admin" method="PUT">
+            <button type="submit">Delete</button>
           </form>
           
         </div>

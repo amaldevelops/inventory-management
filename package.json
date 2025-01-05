@@ -4,8 +4,9 @@
   "description": "Inventory management app based on NodeJs, Express, PostgresSQL",
   "main": "index.js",
   "scripts": {
+    "start":"node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
+      },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/1Amal/NodeJs-Inventory-Application.git"
