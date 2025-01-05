@@ -47,7 +47,12 @@ async function addProduct(req, res) {
 
 async function editProduct(req, res) {
   // console.log("Render Edit product route")
-  const getProductById=await db.SQLgetProductById(1);
+
+  const itemId = req.params;
+
+  const getProductById = await db.SQLgetProductById(itemId.itemId);
+
+  // const getProductById=await db.SQLgetProductById(1);
 
   res.render("editProduct",{getProductById:getProductById});
 }

@@ -10,7 +10,7 @@ inventoryRouter.get("/viewitem/:viewItem",inventoryController.getItemById);
 
 inventoryRouter.get("/admin", inventoryController.adminDashboard);
 
-inventoryRouter.get("/editproduct", inventoryController.editProduct);
+inventoryRouter.get("/editproduct/:itemId", inventoryController.editProduct);
 
 inventoryRouter.get("/addproduct", inventoryController.addProduct);
 
