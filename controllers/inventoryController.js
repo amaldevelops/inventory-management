@@ -34,13 +34,26 @@ async function adminDashboard(req, res) {
 }
 
 async function addProductPage(req, res) {
+  // Display add product page
   res.render("addProduct");
 }
 
-async function addProductToDb(req,res)
-{
+async function addProductToDb(req, res) {
   console.log("Add product to DB");
 
+  const addProductData = {
+    category: req.body.category,
+    item_name: req.body.item_name,
+    manufacturer: req.body.manufacturer,
+    model_no: req.body.model_no,
+    product_description: req.body.product_description,
+    external_product_url: req.body.external_product_url,
+    image_url: req.body.image_url,
+  };
+
+  const addProduct = await db.SQLPostProduct(addProductData);
+
+  res.render("addProduct");
 }
 
 async function editProduct(req, res) {
@@ -66,5 +79,5 @@ module.exports = {
   addProductPage,
   editProduct,
   deleteProduct,
-  addProductToDb
+  addProductToDb,
 };

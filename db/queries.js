@@ -28,11 +28,31 @@ async function SQLdeleteById(id) {
   );
 }
 
+async function SQLPostProduct(addProductData) {
+  console.log(addProductData);
+  try {
+    const query = `INSERT INTO Product_Information(Category,Item_Name,Manufacturer,Model_No,Product_Description,External_Product_URL,Image_URL )
+    VALUES($1,$2,$3,$4,$5,$6,$7)`;
 
+    const values = [
+      addProductData.category,
+      addProductData.item_name,
+      addProductData.manufacturer,
+      addProductData.model_no,
+      addProductData.product_description,
+      addProductData.external_product_url,
+      addProductData.image_url,
+    ];
+    const { rows } = await pool.query(query, values);
+  } catch (error) {
+    console.error("Error in SQL Post Product Query");
+  }
+}
 
 module.exports = {
   SQLgetPopulateAllProducts,
   SQLgetProductById,
   SQLGetProductByCategory,
   SQLdeleteById,
+  SQLPostProduct,
 };
