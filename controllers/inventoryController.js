@@ -58,7 +58,11 @@ async function editProduct(req, res) {
 }
 
 async function deleteProduct(req, res) {
-  res.render("addProduct");
+  const itemId=req.params;
+
+  const getProductById=await db.SQLgetProductById(itemId.itemId);
+
+  res.render("deleteProduct",{getProductById:getProductById});
 }
 
 module.exports = {
