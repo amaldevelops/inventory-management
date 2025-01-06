@@ -21,16 +21,18 @@ async function SQLgetProductById(id) {
   return rows;
 }
 
-async function SQLdeleteById(id)
-{
-  const {rows} = await pool.query("DELETE FROM Product_information WHERE id=$1",[id]);
-
-
+async function SQLdeleteById(id) {
+  const { rows } = await pool.query(
+    "DELETE FROM Product_information WHERE id=$1",
+    [id]
+  );
 }
+
+
 
 module.exports = {
   SQLgetPopulateAllProducts,
   SQLgetProductById,
   SQLGetProductByCategory,
-  SQLdeleteById
+  SQLdeleteById,
 };

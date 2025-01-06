@@ -3,7 +3,6 @@ const db = require("../db/queries");
 async function getAllInventoryItems(req, res) {
   let mainPageRenderView;
   const { select_view } = req.query;
-  // console.log(select_view);
 
   if (select_view === "allItems" || select_view === undefined) {
     mainPageRenderView = await db.SQLgetPopulateAllProducts();
@@ -25,51 +24,47 @@ async function getItemById(req, res) {
 
   const getProductById = await db.SQLgetProductById(viewItem.viewItem);
 
-  // console.log(getProductById);
-
   res.render("viewItem", { getProductById: getProductById });
 }
 
 async function adminDashboard(req, res) {
-  // const getProductById = await db.SQLgetProductById(1);
-  // res.render("storeAdminDashboard", { getProductById: getProductById });
-
   const mainPageRenderView = await db.SQLgetPopulateAllProducts();
 
-  // console.log(mainPageRenderView);
   res.render("storeAdminDashboard", { mainPageRenderView: mainPageRenderView });
 }
 
-async function addProduct(req, res) {
-  console.log("Render Add product route")
+async function addProductPage(req, res) {
   res.render("addProduct");
 }
 
-async function editProduct(req, res) {
-  // console.log("Render Edit product route")
+async function addProductToDb(req,res)
+{
+  console.log("Add product to DB");
 
+}
+
+async function editProduct(req, res) {
   const itemId = req.params;
 
   const getProductById = await db.SQLgetProductById(itemId.itemId);
 
-  // const getProductById=await db.SQLgetProductById(1);
-
-  res.render("editProduct",{getProductById:getProductById});
+  res.render("editProduct", { getProductById: getProductById });
 }
 
 async function deleteProduct(req, res) {
-  const itemId=req.params;
+  const itemId = req.params;
 
-  const getProductById=await db.SQLdeleteById(itemId.itemId);
+  const getProductById = await db.SQLdeleteById(itemId.itemId);
 
-  res.render("deleteProduct",{getProductById:getProductById});
+  res.render("deleteProduct", { getProductById: getProductById });
 }
 
 module.exports = {
   getAllInventoryItems,
   adminDashboard,
   getItemById,
-  addProduct,
+  addProductPage,
   editProduct,
   deleteProduct,
+  addProductToDb
 };
