@@ -14,7 +14,7 @@ inventoryRouter.get("/addproduct", inventoryController.addProduct);
 
 inventoryRouter.get("/editproduct/:itemId", inventoryController.editProduct);
 
-inventoryRouter.get("/deleteproduct/:itemId", inventoryController.deleteProduct)
+inventoryRouter.get("/deleteproduct/:itemId", inventoryController.deleteProduct);
 
 module.exports = inventoryRouter;
 

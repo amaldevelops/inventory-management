@@ -106,7 +106,7 @@ async function main() {
 
   const client = new Client({
     // console.log()
-    connectionString: `${process.env.URI_PRODUCTION}`,
+    connectionString: `${process.env.URI_LOCAL_TESTING}`,
   });
   await client.connect();
   await client.query(SQL);

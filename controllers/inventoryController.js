@@ -60,7 +60,7 @@ async function editProduct(req, res) {
 async function deleteProduct(req, res) {
   const itemId=req.params;
 
-  const getProductById=await db.SQLgetProductById(itemId.itemId);
+  const getProductById=await db.SQLdeleteById(itemId.itemId);
 
   res.render("deleteProduct",{getProductById:getProductById});
 }

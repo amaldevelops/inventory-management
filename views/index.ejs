@@ -25,6 +25,23 @@
             <button type="submit">Update View</button>
             </form>
           </div>
+
+
+          <!-- <div>
+            <form action="/" method="GET">
+              <label for="select_view">Select View</label>
+              <select id="select_view" name="select_view">
+              <option value="allItems" selected>All Items</option>
+              <option value="watch"> Watch Category</option>
+              <option value="phone">Phone Category</option>
+              
+            </select>
+            <button type="submit">Update View</button>
+            </form>
+          </div> -->
+
+
+
       <% if (mainPageRenderView.length>0){%> <%mainPageRenderView.forEach(result=>{%>
       <div>
         <h2><%=result.item_name%></h2>
