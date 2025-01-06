@@ -105,9 +105,22 @@ async function main() {
   console.log(process.env.URI_PRODUCTION);
 
   const client = new Client({
-    // console.log()
-    connectionString: `${process.env.URI_LOCAL_TESTING}`,
+    connectionString: `${process.env.URI_PRODUCTION}`,
+    ssl: {
+      rejectUnauthorized: false // Required for some cloud-hosted databases
+    }
   });
+
+  // const client = new Client({
+  //   host: process.env.DATABASE_HOST,
+  //   database: process.env.DATABASE_NAME,
+  //   username: process.env.DATABASE_USER,
+  //   password: process.env.DATABASE_PASSWORD,
+  //   ssl: 'require',
+  // })
+
+
+
   await client.connect();
   await client.query(SQL);
   await client.end();
