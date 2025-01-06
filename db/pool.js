@@ -10,4 +10,5 @@ module.exports = new Pool({
   database: process.env.DATABASE_NAME,
   password: process.env.INVENTORY_DATABASE_PASSWORD,
   port: process.env.DATABASE_PORT,
+  ssl:true
 });
