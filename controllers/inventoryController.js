@@ -28,9 +28,19 @@ async function getItemById(req, res) {
 }
 
 async function adminDashboard(req, res) {
-  const mainPageRenderView = await db.SQLgetPopulateAllProducts();
+  const adminPW = req.body.adminPW;
 
-  res.render("storeAdminDashboard", { mainPageRenderView: mainPageRenderView });
+  if (adminPW == "Casio") {
+    console.log(adminPW);
+    const mainPageRenderView = await db.SQLgetPopulateAllProducts();
+
+    res.render("storeAdminDashboard", {
+      mainPageRenderView: mainPageRenderView,
+    });
+  } else {
+    console.log("Incorrect Password");
+    res.render("incorrectPassword");
+  }
 }
 
 async function addProductPage(req, res) {
@@ -64,6 +74,23 @@ async function editProduct(req, res) {
   res.render("editProduct", { getProductById: getProductById });
 }
 
+async function editProductToDb(req, res) {
+  const addProductData = {
+    category: req.body.category,
+    item_name: req.body.item_name,
+    manufacturer: req.body.manufacturer,
+    model_no: req.body.model_no,
+    product_description: req.body.product_description,
+    external_product_url: req.body.external_product_url,
+    image_url: req.body.image_url,
+    id: req.body.id,
+  };
+
+  const updateProductDb = await db.SQLUpdateProductById(addProductData);
+
+  res.render("editSucess");
+}
+
 async function deleteProduct(req, res) {
   const itemId = req.params;
 
@@ -80,4 +107,5 @@ module.exports = {
   editProduct,
   deleteProduct,
   addProductToDb,
+  editProductToDb,
 };

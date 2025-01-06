@@ -8,7 +8,9 @@
   </head>
   <body>
     <div>
-        <form action="/admin" method="GET">
+        <form action="/admin" method="POST">
+          <label for="adminPW">Admin Password:</label><br>
+          <input type="password" name="adminPW" id="adminPW"/><br>
             <button type="submit">Admin Dashboard (Edit, Add, Delete Products)</button>
           </form>
         
@@ -26,28 +28,11 @@
             </form>
           </div>
 
-
-          <!-- <div>
-            <form action="/" method="GET">
-              <label for="select_view">Select View</label>
-              <select id="select_view" name="select_view">
-              <option value="allItems" selected>All Items</option>
-              <option value="watch"> Watch Category</option>
-              <option value="phone">Phone Category</option>
-              
-            </select>
-            <button type="submit">Update View</button>
-            </form>
-          </div> -->
-
-
-
       <% if (mainPageRenderView.length>0){%> <%mainPageRenderView.forEach(result=>{%>
       <div>
         <h2><%=result.item_name%></h2>
      
         <a href="<%= `viewitem/${result.id}` %>">View Item</a>
-
 
         <img src=<%=result.image_url %> alt="Product Image" height="250px" width="250px">
         <p><strong>Product ID: </strong><%=result.id%> </p>

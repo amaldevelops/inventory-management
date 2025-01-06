@@ -49,10 +49,49 @@ async function SQLPostProduct(addProductData) {
   }
 }
 
+async function SQLUpdateProductById(addProductData) {
+  try {
+    const query = `UPDATE product_Information
+    SET 
+    Category=$1,
+    Item_Name=$2,
+    Manufacturer=$3,
+    Model_No=$4,
+    Product_Description=$5,
+    External_Product_URL=$6,
+    Image_URL=$7
+    WHERE id=$8`;
+
+    const values = [
+      addProductData.category,
+      addProductData.item_name,
+      addProductData.manufacturer,
+      addProductData.model_no,
+      addProductData.product_description,
+      addProductData.external_product_url,
+      addProductData.image_url,
+      addProductData.id,
+    ];
+    const result = await pool.query(query, values);
+
+    if (result.rowCount > 0) {
+      console.log(`Product with ID ${addProductData.id} updated successfully.`);
+      return result.rowCount; // Optional: Return the number of rows updated
+    } else {
+      console.log(`No product found with ID ${addProductData.id}.`);
+      return 0; // No rows were updated
+    }
+  } catch (error) {
+    console.error("Error in SQL updating Product");
+    throw error;
+  }
+}
+
 module.exports = {
   SQLgetPopulateAllProducts,
   SQLgetProductById,
   SQLGetProductByCategory,
   SQLdeleteById,
   SQLPostProduct,
+  SQLUpdateProductById,
 };
